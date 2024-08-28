@@ -1,2 +1,5 @@
-# dont-say-the-m-word
-Code for an ElixirConf 2024 lightning talk called "Don't Say the M(onad) Word"
+# Don't Say the M Word
+
+This is the code that accompanies my ElixirConf 2024 lightning talk, "Don't Say the M Word."
+
+It's a demo of utilities that wrap the result ~monad~ M word (that is, `:ok`/`:error` tuples), and a pitch for why this simplifies your code.
