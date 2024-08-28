@@ -52,7 +52,7 @@ end)
 attrs
 |> Post.changeset()
 |> Repo.insert()
-|> Result.tap_if_ok(fn %Post{} = post ->
+|> Result.tap_ok(fn %Post{} = post ->
   Analytics.track_event(:post_created, post)
 end)
 
@@ -74,7 +74,7 @@ end)
 attrs
 |> Post.changeset()
 |> Repo.insert()
-|> Result.tap_if_ok(&Analytics.track_event(:post_created, &1))
+|> Result.tap_ok(&Analytics.track_event(:post_created, &1))
 
 
 😍

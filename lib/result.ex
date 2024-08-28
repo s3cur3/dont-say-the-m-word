@@ -96,24 +96,24 @@ defmodule Result do
   @doc """
   Similar to `Kernel.tap/2` but only calls the function if it receives an `:ok` result
 
-      iex> Result.tap_if_ok({:ok, 42}, fn val -> val + 1 end)
+      iex> Result.tap_ok({:ok, 42}, fn val -> val + 1 end)
       {:ok, 42}
 
-      iex> Result.tap_if_ok(:ok, fn -> :side_effects_go_here end)
+      iex> Result.tap_ok(:ok, fn -> :side_effects_go_here end)
       :ok
   """
-  @spec tap_if_ok(t(), (any -> any) | (-> any)) :: t()
-  def tap_if_ok({:ok, value}, fun) when is_function(fun, 1) do
+  @spec tap_ok(t(), (any -> any) | (-> any)) :: t()
+  def tap_ok({:ok, value}, fun) when is_function(fun, 1) do
     fun.(value)
     {:ok, value}
   end
 
-  def tap_if_ok(:ok, fun) when is_function(fun, 0) do
+  def tap_ok(:ok, fun) when is_function(fun, 0) do
     fun.()
     :ok
   end
 
-  def tap_if_ok(result, _), do: result
+  def tap_ok(result, _), do: result
 
   @doc """
   Call a function if the result is `{:ok, _}`, returning the result as a result tuple.
@@ -122,7 +122,7 @@ defmodule Result do
 
   This is a nice alternative to piping into a `case` statement where you only want to
   keep "doing stuff" if the previous (fallible) operation was successful. It's kind of
-  the opposite of `tap_if_ok/2`, which discards the result of the function within
+  the opposite of `tap_ok/2`, which discards the result of the function within
   your pipeline.
 
   Examples:
