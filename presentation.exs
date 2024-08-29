@@ -26,6 +26,44 @@ end
 
 
 
+
+
+
+
+
+
+
+
+attrs
+|> Post.changeset()
+|> Repo.insert()
+|> case do
+  {:ok, post} ->
+    Analytics.track_event(:post_created, post)
+    {:ok, post}
+
+  {:error, changeset} ->
+    {:error, changeset}
+end
+
+
+😏
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 attrs
 |> Post.changeset()
 |> Repo.insert()
