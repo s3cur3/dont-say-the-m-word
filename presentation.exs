@@ -270,7 +270,7 @@ customers =
        {:ok, customers} <- Customers.owning(product) do
     customers
   else
-         _ -> []
+    _ -> []
   end
 
 😕
