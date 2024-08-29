@@ -135,7 +135,7 @@ attrs
 
 
 
-Repo.transaction(fn ->
+Repo.transact(fn ->
   insertion_results =
     Enum.map(posts_attrs, fn post_attrs ->
       post_attrs
@@ -181,7 +181,7 @@ end)
 
 
 
-Repo.transaction(fn ->
+Repo.transact(fn ->
   Result.Enum.map_while_ok(posts_attrs, fn post_attrs ->
     post_attrs
     |> Post.changeset()
