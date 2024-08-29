@@ -289,9 +289,8 @@ customers =
 
 
 
-customers =
-  Stripe.fetch_product(pencil_holder_id)
-  |> Result.map_ok(&Customers.owning/1)
-  |> Result.unwrap([])
+Stripe.fetch_product(pencil_holder_id)
+|> Result.map_ok(&Customers.owning/1)
+|> Result.unwrap([])
 
 🙂‍↕️
